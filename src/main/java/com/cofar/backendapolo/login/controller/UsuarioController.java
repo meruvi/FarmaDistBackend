@@ -81,7 +81,7 @@ public class UsuarioController {
         usuarioResponse.setUsuario(usuario);
 
         System.out.println("Entra A crear Arbol");
-        List<MenuLista> menuListas = menuUsuarioService.crearMenuUsuario(userDetails.getId().intValue());
+        //List<MenuLista> menuListas = menuUsuarioService.crearMenuUsuario(userDetails.getId().intValue());
 
         return ResponseEntity.ok(usuarioResponse);
       //  return ResponseEntity.ok(menuListas);

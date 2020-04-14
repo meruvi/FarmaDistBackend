@@ -21,7 +21,7 @@ public interface CumplimientoFuncionarioMapper {
     public FechaActualizacionVentas getFechaActualizacionVentas(@Param("codAreaEmpresa") int codAreaEmpresa);
     public List<SeguimientoClienteFuncionario> getSeguimientoClienteFuncionario(@Param("codPresupuestoActual") int codPresupuestoActual, @Param("codPersonal") int codPersonal, @Param("codPresupuestoAnterior") int codPresupuestoAnterior);
     //Segumimiento jefe regional
-    public PeriodoSeguimientoVentas getObtener
+    //public PeriodoSeguimientoVentas getObtener
     public double getObtenerPresupuestoVentasDeRegional(@Param("codGestion") int codGestion,
                                                      @Param("codLineaVenta") int codLineaVenta,
                                                      @Param("codPeriodoVentas") int codPeiodoVentas,
