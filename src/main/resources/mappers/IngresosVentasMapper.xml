@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cofar.backendapolo.ingresosVentas.mapper.IngresosVentasMapper">
+
+	<!--
+    *******************   MAPPERs SIMPLES  ************************
+    -->
+	<resultMap id="resultIngresosVentas" type="com.cofar.backendapolo.ingresosVentas.model.IngresosVentas">
+		<id property="codIngresoventas" column="COD_INGRESOVENTAS" />
+		<result property="codAreasEmpresa" column="COD_AREA_EMPRESA" />
+		<result property="codGestion" column="COD_GESTION" />
+		<result property="codSalidaVenta" column="COD_SALIDAVENTA" />
+		<result property="salidaVentaOrigen" column="COD_SALIDAVENTAORIGEN" />
+		<result property="codAlmacenVenta" column="COD_ALMACEN_VENTA" />
+		<result property="codAlmacenVentaOrigen" column="COD_ALMACEN_VENTAORIGEN" />
+		<result property="codTipoIngresoVenta" column="COD_TIPOINGRESOVENTAS" />
+		<result property="codPersonal" column="COD_PERSONAL" />
+		<result property="codProveedor" column="COD_PROVEEDOR" />
+		<result property="codCliente" column="COD_CLIENTE" />
+		<result property="codEstadoIngresoVenta" column="COD_ESTADO_INGRESOVENTAS" />
+		<result property="fechaIngresoVenta" column="FECHA_INGRESOVENTAS" />
+		<result property="fechaModificacionIngresoVenta" column="FECHAMODIFICACION_INGRESOSVENTAS" />
+		<result property="fechaRecepcion" column="FECHA_RECEPCION" />
+		<result property="nroIngresoVentas" column="NRO_INGRESOVENTAS" />
+		<result property="codIngresoRegional" column="COD_INGRESOREGIONAL" />
+		<result property="obsIngresoventas" column="OBS_INGRESOVENTAS" />
+	</resultMap>
+
+
+
+
+
+	<!--
+    *******************   CONSULTAS SELECT  ************************
+    -->
+    <select id="findAllIngresosVentas"
+            resultMap="resultIngresosVentas">
+
+            SELECT * FROM INGRESOS_VENTAS
+
+    </select>
+
+	<select id="findIngresosVentasById" parameterType="int" resultMap="resultIngresosVentas">
+        SELECT * FROM INGRESOS_VENTAS
+        WHERE COD_INGRESOVENTAS = #{id}
+    </select>
+
+	<select id="maxIngresosVentas" resultType="int">
+		SELECT MAX(COD_INGRESOVENTAS) FROM INGRESOS_VENTAS
+	</select>
+
+    <insert id="saveIngresoVenta" parameterType="com.cofar.backendapolo.ingresosVentas.model.IngresosVentas">
+		INSERT INTO INGRESOS_VENTAS (
+		COD_INGRESOVENTAS,
+		COD_AREA_EMPRESA,
+		COD_GESTION,
+		COD_SALIDAVENTA,
+		COD_ALMACEN_VENTA,
+		COD_ALMACEN_VENTAORIGEN,
+		COD_TIPOINGRESOVENTAS,
+		NRO_INGRESOVENTAS,
+		FECHA_INGRESOVENTAS,
+		COD_ESTADO_INGRESOVENTAS,
+		OBS_INGRESOVENTAS,
+		COD_CLIENTE,
+		FECHAMODIFICACION_INGRESOSVENTAS,
+		COD_INGRESOREGIONAL,
+		COD_SALIDAVENTAORIGEN,
+		FECHA_RECEPCION,
+		COD_PERSONAL,
+		COD_PROVEEDOR)
+		VALUES(#{codIngresoventas}, #{codAreasEmpresa}, #{codGestion}, #{codSalidaVenta}, #{codAlmacenVenta}, #{codAlmacenVentaOrigen},
+			#{codTipoIngresoVenta}, #{nroIngresoVentas}, #{fechaIngresoVenta}, #{codEstadoIngresoVenta}, #{obsIngresoventas},
+			#{codCliente}, #{fechaModificacionIngresoVenta}, #{codIngresoRegional}, #{salidaVentaOrigen}, #{fechaRecepcion},
+			#{codPersonal}, #{codProveedor}
+		)
+	</insert>
+
+	<update id="updateIngresoVenta" parameterType="com.cofar.backendapolo.ingresosVentas.model.IngresosVentas">
+        UPDATE INGRESOS_VENTAS SET
+		COD_AREA_EMPRESA = #{codAreasEmpresa},
+		COD_GESTION = #{codGestion},
+		COD_SALIDAVENTA = #{codSalidaVenta},
+		COD_ALMACEN_VENTA = #{codAlmacenVenta},
+		COD_ALMACEN_VENTAORIGEN = #{codAlmacenVentaOrigen},
+		COD_TIPOINGRESOVENTAS = #{codTipoIngresoVenta},
+		NRO_INGRESOVENTAS = #{nroIngresoVentas},
+		FECHA_INGRESOVENTAS = #{fechaIngresoVenta},
+		COD_ESTADO_INGRESOVENTAS = #{codEstadoIngresoVenta},
+		OBS_INGRESOVENTAS = #{obsIngresoventas},
+		COD_CLIENTE = #{codCliente},
+		FECHAMODIFICACION_INGRESOSVENTAS = #{fechaModificacionIngresoVenta},
+		COD_INGRESOREGIONAL = #{codIngresoRegional},
+		COD_SALIDAVENTAORIGEN = #{salidaVentaOrigen},
+		FECHA_RECEPCION = #{fechaRecepcion},
+		COD_PERSONAL = #{codPersonal},
+		COD_PROVEEDOR = #{codProveedor}
+        WHERE COD_INGRESOVENTAS = #{codIngresoventas}
+    </update>
+
+	<delete id="deleteIngresoVenta" parameterType="int">
+        DELETE FROM INGRESOS_VENTAS WHERE COD_INGRESOVENTAS = #{id}
+    </delete>
+
+</mapper>
