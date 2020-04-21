@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cofar.backendapolo.pruebasCRUD.mapper.PaisMapper">
+
+    <!--
+    *******************   MAPPERs SIMPLES  ************************
+    -->
+    <resultMap id="resultPais" type="com.cofar.backendapolo.pruebasCRUD.model.Pais">
+        <id property="codPais" column="COD_PAIS" />
+        <result property="nombrePais" column="NOMBRE_PAIS" />
+        <result property="nacionalidad" column="NACIONALIDAD" />
+        <result property="codEstadoRegistro" column="COD_ESTADO_REGISTRO" />
+    </resultMap>
+
+    <!--
+    *******************   MAPPERs CON ANIDADOS  ************************
+    -->
+    <resultMap id="resultPaisAndEstadoRegistro" type="com.cofar.backendapolo.pruebasCRUD.model.Pais">
+        <id property="codPais" column="COD_PAIS" />
+        <result property="nombrePais" column="NOMBRE_PAIS" />
+        <result property="nacionalidad" column="NACIONALIDAD" />
+        <result property="codEstadoRegistro" column="COD_ESTADO_REGISTRO" />
+        <association property="estadoRegistro" resultMap="com.cofar.backendapolo.pruebasCRUD.mapper.EstadoRegistroMapper.estadoRegistroMap" />
+    </resultMap>
+
+
+
+
+    <!--
+    *******************   CONSULTAS SELECT  ************************
+    -->
+    <select id="getPaises" resultMap="resultPais">
+        SELECT COD_PAIS, NOMBRE_PAIS, NACIONALIDAD, COD_ESTADO_REGISTRO
+        FROM PAISES
+    </select>
+
+    <select id="getPaisesWithChild" resultMap="resultPaisAndEstadoRegistro">
+        select COD_PAIS, NOMBRE_PAIS, NACIONALIDAD, p.COD_ESTADO_REGISTRO, NOMBRE_ESTADO_REGISTRO, OBS_ESTADO_REGISTRO
+        from PAISES p
+        inner join ESTADOS_REGISTRO e
+        on p.COD_ESTADO_REGISTRO = e.COD_ESTADO_REGISTRO
+    </select>
+
+    <select id="getPaisById" parameterType="int" resultMap="resultPais">
+        SELECT * FROM PAISES
+        WHERE COD_PAIS = #{id}
+    </select>
+
+    <select id="getPaisByIdWithChild" parameterType="int" resultMap="resultPaisAndEstadoRegistro">
+        select *
+        from PAISES p
+        inner join ESTADOS_REGISTRO e
+        on p.COD_ESTADO_REGISTRO = e.COD_ESTADO_REGISTRO
+        WHERE COD_PAIS = #{id}
+    </select>
+
+
+
+    <!--
+    *******************   CONSULTAS INSERT, UPDATE Y DELETE  ************************
+    -->
+    <insert id="insertPais" parameterType="com.cofar.backendapolo.pruebasCRUD.model.Pais" useGeneratedKeys="true">
+        INSERT INTO PAISES(COD_PAIS, NOMBRE_PAIS, NACIONALIDAD, COD_ESTADO_REGISTRO)
+        VALUES (#{codPais}, #{nombrePais}, #{nacionalidad}, #{codEstadoRegistro})
+    </insert>
+
+    <update id="updatePais" parameterType="com.cofar.backendapolo.pruebasCRUD.model.Pais">
+        UPDATE PAISES SET
+        NOMBRE_PAIS = #{nombrePais},
+        NACIONALIDAD = #{nacionalidad},
+        COD_ESTADO_REGISTRO = #{codEstadoRegistro}
+        WHERE COD_PAIS = #{codPais}
+    </update>
+
+    <delete id="deletePais" parameterType="int">
+        DELETE FROM PAISES WHERE COD_PAIS = #{codPais}
+    </delete>
+</mapper>
