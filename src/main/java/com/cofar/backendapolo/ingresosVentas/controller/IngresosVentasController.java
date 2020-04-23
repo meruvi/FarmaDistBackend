@@ -15,14 +15,14 @@ public class IngresosVentasController {
     @Autowired
     private IngresosVentasService ingresosVentasService;
 
-    @GetMapping("")
-    public List<IngresosVentas> getIngresosVentas(){
-        return ingresosVentasService.findAllIngresosVentas();
+    @GetMapping("/{codArea}")
+    public List<IngresosVentas> getIngresosVentas(@PathVariable("codArea") int codArea){
+        return ingresosVentasService.findAllIngresosVentas(codArea);
     }
 
-    @GetMapping("/{id}")
-    public IngresosVentas findIngresosVentasById(@PathVariable("id") int id){
-        return ingresosVentasService.findIngresosVentasById(id);
+    @GetMapping("/{codArea}/{id}")
+    public IngresosVentas findIngresosVentasById(@PathVariable("codArea") int codArea, @PathVariable("id") int id){
+        return ingresosVentasService.findIngresosVentasByIdAndArea(id, codArea);
     }
 
     @PostMapping("")
@@ -35,8 +35,8 @@ public class IngresosVentasController {
         return ingresosVentasService.updateIngresoVenta(id, ingresoVenta);
     }
 
-    @DeleteMapping("/{id}")
-    public int deleteIngresoVenta(@PathVariable("id") int id){
-        return ingresosVentasService.deleteIngresoVenta(id);
+    @DeleteMapping("/{codArea}/{id}")
+    public int deleteIngresoVenta(@PathVariable("codArea") int codArea, @PathVariable("id") int id){
+        return ingresosVentasService.deleteIngresoVenta(id,codArea);
     }
 }

@@ -26,18 +26,35 @@
 		<result property="obsIngresoventas" column="OBS_INGRESOVENTAS" />
 	</resultMap>
 
+	<resultMap id="ingresosDetalleVentasMap" type="com.cofar.backendapolo.ingresosVentas.model.IngresosDetalleVentas">
+		<id property="codIngresoventas" column="COD_INGRESOVENTAS" />
+		<result property="codPresentacion" column="COD_PRESENTACION" />
+		<result property="codLoteProduccion" column="COD_LOTE_PRODUCCION" />
+		<result property="codAreaEmpresa" column="COD_AREA_EMPRESA" />
+		<result property="cantidad" column="CANTIDAD" />
+		<result property="cantidadUnitaria" column="CANTIDAD_UNITARIA" />
+		<result property="cantidadRestante" column="CANTIDAD_RESTANTE" />
+		<result property="cantidadUnitariaRestante" column="CANTIDAD_UNITARIARESTANTE" />
+		<result property="codTipoObsIngreso" column="COD_TIPOOBSINGRESO" />
+		<result property="fechaVenc" column="FECHA_VENC" />
+		<result property="cantidadFRV" column="CANTIDAD_FRV" />
+		<result property="cantidadUnitariaFRV" column="CANTIDADUNITARIA_FRV" />
+		<result property="cantidadMAS" column="CANTIDAD_MAS" />
+		<result property="cantidadUnitariaMAS" column="CANTIDADUNITARIA_MAS" />
+		<result property="cantidadMENOS" column="CANTIDAD_MENOS" />
+		<result property="cantidadUnitariaMENOS" column="CANTIDADUNITARIA_MENOS" />
+	</resultMap>
 
 
 
 
 	<!--
-    *******************   CONSULTAS SELECT  ************************
+    *******************   CONSULTAS INGRESOS_VENTAS  ************************
     -->
-    <select id="findAllIngresosVentas"
-            resultMap="resultIngresosVentas">
-
-            SELECT * FROM INGRESOS_VENTAS
-
+    <select id="findAllIngresosVentas" parameterType="int" resultMap="resultIngresosVentas">
+		SELECT *
+		FROM INGRESOS_VENTAS
+		WHERE COD_AREA_EMPRESA = #{codArea}
     </select>
 
 	<select id="findIngresosVentasById" parameterType="int" resultMap="resultIngresosVentas">
@@ -45,8 +62,14 @@
         WHERE COD_INGRESOVENTAS = #{id}
     </select>
 
-	<select id="maxIngresosVentas" resultType="int">
-		SELECT MAX(COD_INGRESOVENTAS) FROM INGRESOS_VENTAS
+	<select id="findIngresosVentasByIdAndArea" parameterType="int" resultMap="resultIngresosVentas">
+        SELECT * FROM INGRESOS_VENTAS
+        WHERE COD_INGRESOVENTAS = #{id}
+        AND COD_AREA_EMPRESA = #{codAreaEmpresa}
+    </select>
+
+	<select id="maxIngresosVentas" parameterType="int" resultType="int">
+		SELECT MAX(COD_INGRESOVENTAS) FROM INGRESOS_VENTAS AND COD_AREA_EMPRESA = #{codArea}
 	</select>
 
     <insert id="saveIngresoVenta" parameterType="com.cofar.backendapolo.ingresosVentas.model.IngresosVentas">
@@ -100,6 +123,73 @@
 
 	<delete id="deleteIngresoVenta" parameterType="int">
         DELETE FROM INGRESOS_VENTAS WHERE COD_INGRESOVENTAS = #{id}
+    </delete>
+
+
+
+
+	<!--
+    *******************   CONSULTAS INGRESOS_DETALLEVENTAS  ************************
+    -->
+
+	<select id="findAllIngresosDetalleVentas" resultMap="ingresosDetalleVentasMap">
+		SELECT * FROM INGRESOS_DETALLEVENTAS
+    </select>
+
+	<select id="findIngresosDetallesVentasById" parameterType="int" resultMap="ingresosDetalleVentasMap">
+        SELECT * FROM INGRESOS_DETALLEVENTAS
+        WHERE COD_INGRESOVENTAS = #{id}
+    </select>
+
+	<insert id="saveIngresoDetalleVenta" parameterType="com.cofar.backendapolo.ingresosVentas.model.IngresosDetalleVentas">
+		INSERT INTO INGRESOS_DETALLEVENTAS (
+		COD_INGRESOVENTAS,
+		COD_PRESENTACION,
+		COD_LOTE_PRODUCCION,
+		COD_AREA_EMPRESA,
+		CANTIDAD,
+		CANTIDAD_UNITARIA,
+		CANTIDAD_RESTANTE,
+		CANTIDAD_UNITARIARESTANTE,
+		COD_TIPOOBSINGRESO,
+		FECHA_VENC,
+		CANTIDAD_FRV,
+		CANTIDADUNITARIA_FRV,
+		CANTIDAD_MAS,
+		CANTIDADUNITARIA_MAS,
+		CANTIDAD_MENOS,
+		CANTIDADUNITARIA_MENOS)
+		VALUES(#{codIngresoventas}, #{codPresentacion}, #{codLoteProduccion}, #{codAreaEmpresa}, #{cantidad}, #{cantidadUnitaria},
+			#{cantidadRestante}, #{cantidadUnitariaRestante}, #{codTipoObsIngreso}, #{fechaVenc}, #{cantidadFRV},
+			#{cantidadUnitariaFRV}, #{cantidadMAS}, #{cantidadUnitariaMAS}, #{cantidadMENOS}, #{cantidadUnitariaMENOS}
+		)
+	</insert>
+
+	<update id="updateIngresoDetalleVenta" parameterType="com.cofar.backendapolo.ingresosVentas.model.IngresosDetalleVentas">
+        UPDATE INGRESOS_DETALLEVENTAS SET
+		CANTIDAD = #{cantidad},
+		CANTIDAD_UNITARIA = #{cantidadUnitaria},
+		CANTIDAD_RESTANTE = #{cantidadRestante},
+		CANTIDAD_UNITARIARESTANTE = #{cantidadUnitariaRestante},
+		COD_TIPOOBSINGRESO = #{codTipoObsIngreso},
+		FECHA_VENC = #{fechaVenc},
+		CANTIDAD_FRV = #{cantidadFRV},
+		CANTIDADUNITARIA_FRV = #{cantidadUnitariaFRV},
+		CANTIDAD_MAS = #{cantidadMAS},
+		CANTIDADUNITARIA_MAS = #{cantidadUnitariaMAS},
+		CANTIDAD_MENOS = #{cantidadMENOS},
+		CANTIDADUNITARIA_MENOS = #{cantidadUnitariaMENOS}
+        WHERE COD_INGRESOVENTAS = #{codIngresoventas}
+        AND COD_PRESENTACION = #{codPresentacion}
+		AND COD_LOTE_PRODUCCION = #{codLoteProduccion}
+		AND COD_AREA_EMPRESA = #{codAreaEmpresa}
+    </update>
+
+	<delete id="deleteIngresosDetalleVentas" parameterType="int">
+        DELETE
+        FROM INGRESOS_DETALLEVENTAS
+        WHERE COD_INGRESOVENTAS = #{id}
+        AND COD_AREA_EMPRESA = #{codAreaEmpresa}
     </delete>
 
 </mapper>

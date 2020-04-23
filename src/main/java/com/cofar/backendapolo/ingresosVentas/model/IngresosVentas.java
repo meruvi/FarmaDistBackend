@@ -1,6 +1,8 @@
 package com.cofar.backendapolo.ingresosVentas.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class IngresosVentas {
 
@@ -22,6 +24,7 @@ public class IngresosVentas {
     private int nroIngresoVentas = 0;
     private int codIngresoRegional = 0;
     private String obsIngresoventas = "";
+    private List<IngresosDetalleVentas> ingresoDetalleVenta = new ArrayList<>();
 
     public int getCodIngresoventas() {
         return codIngresoventas;
@@ -165,5 +168,13 @@ public class IngresosVentas {
 
     public void setObsIngresoventas(String obsIngresoventas) {
         this.obsIngresoventas = obsIngresoventas;
+    }
+
+    public List<IngresosDetalleVentas> getIngresoDetalleVenta() {
+        return ingresoDetalleVenta;
+    }
+
+    public void setIngresoDetalleVenta(List<IngresosDetalleVentas> ingresoDetalleVenta) {
+        this.ingresoDetalleVenta = ingresoDetalleVenta;
     }
 }
