@@ -7,7 +7,7 @@
     <resultMap id="UsuarioResulMap" type="com.cofar.backendapolo.login.model.Usuario">
         <result column="COD_PERSONAL" property="id" />
         <result column="COD_AREA_EMPRESA" property="codAreaEmpresa" />
-        <result column="CODIGO_CARGO" property="codCargo" />
+        <result column="COD_CARGO" property="codCargo" />
         <result column="name" property="name" />
         <result column="NOMBRE_USUARIO" property="username" />
         <result column="CORREO_EMPRESA" property="email" />
@@ -16,7 +16,7 @@
 
 
     <select id="buscarUsuarioPorNombre" resultMap="UsuarioResulMap" >
-            select u.COD_PERSONAL, p.COD_AREA_EMPRESA, p.CODIGO_CARGO,
+            select u.COD_PERSONAL, p.COD_AREA_EMPRESA, p.COD_CARGO,
             p.NOMBRES_PERSONAL + ' ' + p.AP_PATERNO_PERSONAL as name, u.NOMBRE_USUARIO,
             p.CORREO_EMPRESA, u.CONTRASENA_USUARIO
             from USUARIOS_MODULOS u inner join personal p
@@ -27,7 +27,7 @@
     </select>
 
     <select id="findById" resultMap="UsuarioResulMap" >
-        select u.COD_PERSONAL, p.COD_AREA_EMPRESA, p.CODIGO_CARGO,
+        select u.COD_PERSONAL, p.COD_AREA_EMPRESA, p.COD_CARGO,
         p.NOMBRES_PERSONAL + ' ' + p.AP_PATERNO_PERSONAL as name, u.NOMBRE_USUARIO,
         p.CORREO_EMPRESA, u.CONTRASENA_USUARIO
         from USUARIOS_MODULOS u inner join personal p
