@@ -69,7 +69,7 @@
     </select>
 
 	<select id="maxIngresosVentas" parameterType="int" resultType="int">
-		SELECT MAX(COD_INGRESOVENTAS) FROM INGRESOS_VENTAS AND COD_AREA_EMPRESA = #{codArea}
+		SELECT MAX(COD_INGRESOVENTAS) FROM INGRESOS_VENTAS WHERE COD_AREA_EMPRESA = #{codArea}
 	</select>
 
     <insert id="saveIngresoVenta" parameterType="com.cofar.backendapolo.ingresosVentas.model.IngresosVentas">
