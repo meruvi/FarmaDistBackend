@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cofar.backendapolo.ingresosVentas.mapper.TiposIngresosVentasMapper">
+
+	<!--
+    *******************   MAPPERs SIMPLES  ************************
+    -->
+	<resultMap id="tiposIngresosVentasMap" type="com.cofar.backendapolo.ingresosVentas.model.TipoIngresoVentas">
+		<id property="codTipoIngresoVenta" column="COD_TIPOINGRESOVENTAS" />
+		<result property="nombreTipoIngresoVenta" column="NOMBRE_TIPOINGRESOVENTAS" />
+		<result property="obsTipoIngresoVenta" column="OBS_TIPOINGRESOVENTAS" />
+		<result property="codEstadoRegistro" column="COD_ESTADO_REGISTRO" />
+		<result property="abreviaturaTipoIngresoVenta" column="ABREVIATURA_TIPOINGRESOVENTAS" />
+	</resultMap>
+
+	<resultMap id="tiposIngresosVentasMapDTO" type="com.cofar.backendapolo.ingresosVentas.model.TipoIngresoVentasDto">
+		<id property="codTipoIngresoVenta" column="COD_TIPOINGRESOVENTAS" />
+		<result property="nombreTipoIngresoVenta" column="NOMBRE_TIPOINGRESOVENTAS" />
+	</resultMap>
+
+
+
+	<!--
+    *******************   CONSULTAS PRESENTACIONES_PRODUCTO  ************************
+    -->
+	<select id="getCodAndNombreActive" resultMap="tiposIngresosVentasMapDTO">
+		SELECT COD_TIPOINGRESOVENTAS, NOMBRE_TIPOINGRESOVENTAS
+		FROM TIPOS_INGRESOVENTAS
+		WHERE COD_TIPOINGRESOVENTAS != 6
+		AND COD_ESTADO_REGISTRO = 1
+    </select>
+
+</mapper>
