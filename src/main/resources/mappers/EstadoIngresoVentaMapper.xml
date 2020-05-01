@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cofar.backendapolo.EstadosIngresosVentas.mapper.EstadoIngresoVentaMapper">
+
+	<!--
+    *******************   MAPPERs SIMPLES  ************************
+    -->
+	<resultMap id="estadoIngresoVentaMap" type="com.cofar.backendapolo.EstadosIngresosVentas.model.EstadoIngresoVenta">
+		<id property="codEstadoIngresoVentas" column="COD_ESTADOINGRESOVENTA" />
+		<result property="nombreEstadoIngresoVenta" column="NOMBRE_ESTADOINGRESOVENTA" />
+		<result property="obsEstadoIngresoVenta" column="OBS_ESTADOINGRESOVENTA" />
+	</resultMap>
+
+	<resultMap id="estadoIngresoVentaMapDTO" type="com.cofar.backendapolo.EstadosIngresosVentas.model.EstadoIngresoVentaDto">
+		<id property="codEstadoIngresoVentas" column="COD_ESTADOINGRESOVENTA" />
+		<result property="nombreEstadoIngresoVenta" column="NOMBRE_ESTADOINGRESOVENTA" />
+	</resultMap>
+
+
+	<!--
+    *******************   CONSULTAS ESTADOS INGRESOS VENTAS  ************************
+    -->
+	<select id="getCodAndNombreActive" parameterType="int" resultMap="estadoIngresoVentaMapDTO">
+		SELECT COD_ESTADOINGRESOVENTA, NOMBRE_ESTADOINGRESOVENTA
+		FROM ESTADOS_INGRESOVENTAS
+    </select>
+
+</mapper>
