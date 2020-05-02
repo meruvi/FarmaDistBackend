@@ -31,4 +31,13 @@
 		ORDER BY NOMBRE_CLIENTE ASC
     </select>
 
+    <select id="getCodAndNombreActiveByTipo" parameterType="int" resultMap="clienteMapDTO">
+		SELECT COD_CLIENTE, NOMBRE_CLIENTE
+		FROM CLIENTES
+		WHERE COD_AREA_EMPRESA = #{codArea}
+		AND COD_TIPOCLIENTE = #{codTipoCliente}
+		AND COD_ESTADOCLIENTE = 1
+		ORDER BY NOMBRE_CLIENTE ASC
+    </select>
+
 </mapper>

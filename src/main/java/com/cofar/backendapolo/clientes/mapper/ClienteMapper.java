@@ -14,4 +14,6 @@ public interface ClienteMapper {
 
     List<ClienteDto> getCodAndNombreActive(int codArea);
 
+    List<ClienteDto> getCodAndNombreActiveByTipo(int codArea, int codTipoCliente);
+
 }

@@ -17,9 +17,9 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    @GetMapping("/{codArea}/dto")
-    public List<ClienteDto> getAllAlmacenesVentas(@PathVariable("codArea") int codArea){
-        return clienteService.findCodClienteAndNombre(codArea);
+    @GetMapping("/{codArea}/dto/{codTipoCliente}")
+    public List<ClienteDto> getAllAlmacenesVentas(@PathVariable("codArea") int codArea, @PathVariable("codTipoCliente") int codTipoCliente){
+        return clienteService.findCodClienteAndNombre(codArea, codTipoCliente);
     }
 
 }

@@ -15,7 +15,11 @@ public class ClienteService {
     private ClienteMapper clienteMapper;
 
     @Transactional
-    public List<ClienteDto> findCodClienteAndNombre(int codArea) {
-        return clienteMapper.getCodAndNombreActive(codArea);
+    public List<ClienteDto> findCodClienteAndNombre(int codArea, int codTipoCliente) {
+        if(codTipoCliente == 0) {
+            return clienteMapper.getCodAndNombreActive(codArea);
+        }else{
+            return clienteMapper.getCodAndNombreActiveByTipo(codArea, codTipoCliente);
+        }
     }
 }
