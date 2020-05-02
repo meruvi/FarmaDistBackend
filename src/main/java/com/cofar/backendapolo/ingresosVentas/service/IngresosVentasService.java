@@ -44,6 +44,10 @@ public class IngresosVentasService {
         return ingreso;
     }
 
+    public int findNroIngresosVentas(int codGestion, int codAlmacen){
+        return ingresosVentasMapper.nroIngresosVentas(codGestion, codAlmacen);
+    }
+
     @Transactional
     public int saveIngresoVenta(IngresosVentas ingresosVentas) {
 

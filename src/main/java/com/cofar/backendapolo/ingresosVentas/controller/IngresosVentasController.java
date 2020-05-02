@@ -25,6 +25,11 @@ public class IngresosVentasController {
         return ingresosVentasService.findIngresosVentasByIdAndArea(id, codArea);
     }
 
+    @GetMapping("/nroIngreso/{codGestion}/{codAlmacen}")
+    public int findNroIngresosVentas(@PathVariable("codGestion") int codGestion, @PathVariable("codAlmacen") int codAlmacen){
+        return ingresosVentasService.findNroIngresosVentas(codGestion, codAlmacen);
+    }
+
     @PostMapping("")
     public int insertIngresosVentas(@Valid @RequestBody IngresosVentas ingresoVenta){
         return ingresosVentasService.saveIngresoVenta(ingresoVenta);

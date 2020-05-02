@@ -21,6 +21,8 @@ public interface IngresosVentasMapper {
 
     Integer maxIngresosVentas(Integer codArea);
 
+    Integer nroIngresosVentas(int codGestion, int codAlmacen);
+
     Integer saveIngresoVenta(IngresosVentas ingresoVenta);
 
     Integer updateIngresoVenta(IngresosVentas ingresoVenta);

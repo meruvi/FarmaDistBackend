@@ -72,6 +72,13 @@
 		SELECT MAX(COD_INGRESOVENTAS) FROM INGRESOS_VENTAS WHERE COD_AREA_EMPRESA = #{codArea}
 	</select>
 
+	<select id="nroIngresosVentas" parameterType="int" resultType="int">
+		SELECT ISNULL(MAX(NRO_INGRESOVENTAS),0)+1
+		FROM INGRESOS_VENTAS
+		WHERE COD_GESTION = #{codGestion}
+		AND COD_ALMACEN_VENTA = #{codAlmacen}
+	</select>
+
     <insert id="saveIngresoVenta" parameterType="com.cofar.backendapolo.ingresosVentas.model.IngresosVentas">
 		INSERT INTO INGRESOS_VENTAS (
 		COD_INGRESOVENTAS,
