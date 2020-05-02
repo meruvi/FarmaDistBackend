@@ -4,7 +4,7 @@ import com.cofar.backendapolo.pruebas.model.Cliente;
 
 import java.util.List;
 
-public interface ClienteService {
+public interface ClienteServicePrueba {
 
     public abstract List<Cliente> getClientes();
 }

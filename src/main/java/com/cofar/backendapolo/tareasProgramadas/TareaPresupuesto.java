@@ -1,6 +1,6 @@
 package com.cofar.backendapolo.tareasProgramadas;
 
-import com.cofar.backendapolo.pruebas.service.ClienteService;
+import com.cofar.backendapolo.pruebas.service.ClienteServicePrueba;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 public class TareaPresupuesto {
 
     @Autowired
-    @Qualifier("clienteService")
-    private ClienteService clienteService;
+    @Qualifier("clienteServicePrueba")
+    private ClienteServicePrueba clienteService;
 
     @Scheduled(
             cron = "0,30 * * * * *")

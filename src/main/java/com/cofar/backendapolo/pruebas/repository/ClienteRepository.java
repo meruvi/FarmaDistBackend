@@ -1,6 +1,6 @@
 package com.cofar.backendapolo.pruebas.repository;
 
-import com.cofar.backendapolo.pruebas.mapper.ClienteMapper;
+import com.cofar.backendapolo.pruebas.mapper.ClienteMapperPrueba;
 import com.cofar.backendapolo.pruebas.model.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,7 +11,7 @@ import java.util.List;
 public class ClienteRepository {
 
     @Autowired
-    private ClienteMapper clienteMapper;
+    private ClienteMapperPrueba clienteMapper;
 
     public List<Cliente> listarClientes() {
         List<Cliente> clientes = clienteMapper.listarClientes();

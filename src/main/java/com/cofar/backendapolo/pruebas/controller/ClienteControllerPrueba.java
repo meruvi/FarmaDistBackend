@@ -1,7 +1,7 @@
 package com.cofar.backendapolo.pruebas.controller;
 
 import com.cofar.backendapolo.pruebas.model.Cliente;
-import com.cofar.backendapolo.pruebas.service.ClienteService;
+import com.cofar.backendapolo.pruebas.service.ClienteServicePrueba;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +12,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cliente")
-public class ClienteController {
+public class ClienteControllerPrueba {
 
     @Autowired
-    @Qualifier("clienteService")
-    private ClienteService clienteService;
+    @Qualifier("clienteServicePrueba")
+    private ClienteServicePrueba clienteService;
 
     @GetMapping("/clientes")
     public List<Cliente> clientes() {
