@@ -3,9 +3,11 @@ package com.cofar.backendapolo.ingresosVentas.controller;
 import com.cofar.backendapolo.ingresosVentas.model.IngresosVentas;
 import com.cofar.backendapolo.ingresosVentas.service.IngresosVentasService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @RestController
@@ -44,4 +46,15 @@ public class IngresosVentasController {
     public int deleteIngresoVenta(@PathVariable("codArea") int codArea, @PathVariable("id") int id){
         return ingresosVentasService.deleteIngresoVenta(id,codArea);
     }
+
+
+    @GetMapping("/{codGestion}/{codArea}/{codTipoCliente}")
+    public LinkedHashMap<String, Object> recuperarNecesarioRegistroIngresosVentas(
+            @PathVariable("codGestion") int codGestion,
+            @PathVariable("codArea") int codArea,
+            @PathVariable("codTipoCliente") int codTipoCliente){
+
+        return ingresosVentasService.findNecesarioRegistroIngresosVentas(codGestion, codArea, codTipoCliente);
+    }
+
 }
