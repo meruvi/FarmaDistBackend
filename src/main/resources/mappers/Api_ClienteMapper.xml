@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cofar.backendapolo.api.mapper.ClienteMapperApi">
+
+	<!--
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+     ***********************************************    API VERSION 1     **********************************************
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+    -->
+
+    <resultMap id="clienteMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.cliente.model.ClienteDto">
+        <id property="codCliente" column="COD_CLIENTE" />
+        <result property="nombreCliente" column="NOMBRE_CLIENTE" />
+    </resultMap>
+
+
+    <!--
+    *******************   CONSULTAS PRESENTACIONES_PRODUCTO  ************************
+    -->
+    <select id="getCodAndNombreActive" parameterType="int" resultMap="clienteMapDtoV1">
+		SELECT COD_CLIENTE, NOMBRE_CLIENTE
+		FROM CLIENTES
+		WHERE COD_AREA_EMPRESA = #{codArea}
+		AND COD_ESTADOCLIENTE = 1
+		ORDER BY NOMBRE_CLIENTE ASC
+    </select>
+
+    <select id="getCodAndNombreActiveByTipo" parameterType="int" resultMap="clienteMapDtoV1">
+		SELECT COD_CLIENTE, NOMBRE_CLIENTE
+		FROM CLIENTES
+		WHERE COD_AREA_EMPRESA = #{codArea}
+		AND COD_TIPOCLIENTE = #{codTipoCliente}
+		AND COD_ESTADOCLIENTE = 1
+		ORDER BY NOMBRE_CLIENTE ASC
+    </select>
+
+
+</mapper>

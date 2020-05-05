@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cofar.backendapolo.api.mapper.AlmacenVentaMapperApi">
+
+	<!--
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+     ***********************************************    API VERSION 1     **********************************************
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+    -->
+	<resultMap id="almacenVentaMap" type="com.cofar.backendapolo.api.v1.molulos.almacenVenta.model.AlmacenVenta">
+		<id property="codAlmacenVenta" column="COD_ALMACENVENTA" />
+		<result property="codTipoAlmacenVenta" column="COD_TIPOALMACENVENTA" />
+		<result property="nombreAlmacenVenta" column="NOMBRE_ALMACENVENTA" />
+		<result property="codAreaEmpresa" column="COD_AREA_EMPRESA" />
+		<result property="codEstadoRegistro" column="COD_ESTADO_REGISTRO" />
+		<result property="obsAlmacenVenta" column="OBS_ALMACENVENTA" />
+	</resultMap>
+
+	<resultMap id="almacenVentaMapDTO" type="com.cofar.backendapolo.api.v1.molulos.almacenVenta.model.AlmacenVentaDto">
+		<id property="codAlmacenVenta" column="COD_ALMACENVENTA" />
+		<result property="nombreAlmacenVenta" column="NOMBRE_ALMACENVENTA" />
+	</resultMap>
+
+
+	<!--
+    *******************   CONSULTAS PRESENTACIONES_PRODUCTO  ************************
+    -->
+	<select id="getCodAndNombreActive" parameterType="int" resultMap="almacenVentaMapDTO">
+		SELECT COD_ALMACENVENTA, NOMBRE_ALMACENVENTA
+		FROM ALMACENES_VENTAS
+		WHERE COD_AREA_EMPRESA = #{codArea}
+		AND COD_ESTADO_REGISTRO = 1
+    </select>
+
+
+
+</mapper>

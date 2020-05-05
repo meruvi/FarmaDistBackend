@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cofar.backendapolo.api.mapper.PresentacionesProductoMapperApi">
+
+	<!--
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+     ***********************************************    API VERSION 1     **********************************************
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+    -->
+	<resultMap id="productosMapV1" type="com.cofar.backendapolo.api.v1.molulos.presentacionProducto.model.PresentacionesProducto">
+		<id property="codPresentacion" column="COD_PRESENTACION" />
+		<result property="codLineaMKT" column="COD_LINEAMKT" />
+		<result property="cantidadPresentacion" column="CANTIDAD_PRESENTACION" />
+		<result property="codTipoMercaderia" column="COD_TIPOMERCADERIA" />
+		<result property="obsPresentacion" column="OBS_PRESENTACION" />
+		<result property="codEstadoPresentacionProducto" column="COD_ESTADO_PRESENTACION_PRODUCTO" />
+		<result property="nombreProductoPresentacion" column="NOMBRE_PRODUCTO_PRESENTACION" />
+		<result property="codTipoPresentacion" column="COD_TIPOPRESENTACION" />
+		<result property="codCategoria" column="COD_CATEGORIA" />
+		<result property="peso" column="PESO" />
+	</resultMap>
+
+	<resultMap id="productosMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.presentacionProducto.model.PresentacionesProductoDto">
+		<id property="codPresentacion" column="COD_PRESENTACION" />
+		<result property="nombreProductoPresentacion" column="NOMBRE_PRODUCTO_PRESENTACION" />
+	</resultMap>
+
+	<select id="getCodPresentacionAndNombre" parameterType="String" resultMap="productosMapDtoV1">
+        SELECT
+		COD_PRESENTACION,
+		NOMBRE_PRODUCTO_PRESENTACION
+		FROM
+		PRESENTACIONES_PRODUCTO
+		WHERE NOMBRE_PRODUCTO_PRESENTACION LIKE '%' + #{nombre} + '%'
+    </select>
+
+	<select id="findById" parameterType="int" resultMap="productosMapV1">
+        SELECT
+		COD_PRESENTACION,
+		COD_LINEAMKT,
+		CANTIDAD_PRESENTACION,
+		COD_TIPOMERCADERIA,
+		OBS_PRESENTACION,
+		COD_ESTADO_PRESENTACION_PRODUCTO,
+		NOMBRE_PRODUCTO_PRESENTACION,
+		COD_TIPOPRESENTACION,
+		COD_CATEGORIA,
+		PESO
+		FROM
+		PRESENTACIONES_PRODUCTO
+		WHERE COD_PRESENTACION = #{id}
+    </select>
+
+
+</mapper>

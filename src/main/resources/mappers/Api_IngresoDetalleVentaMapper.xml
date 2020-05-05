@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cofar.backendapolo.api.mapper.IngresoDetalleVentasMapperApi">
+
+    <!--
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+     ***********************************************    API VERSION 1     **********************************************
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+    -->
+    <resultMap id="ingresosDetalleVentasMapDao" type="com.cofar.backendapolo.api.v1.molulos.ingresodetalleVenta.model.IngresoDetalleVenta">
+        <id property="codIngresoventas" column="COD_INGRESOVENTAS" />
+        <result property="codPresentacion" column="COD_PRESENTACION" />
+        <result property="codLoteProduccion" column="COD_LOTE_PRODUCCION" />
+        <result property="codAreaEmpresa" column="COD_AREA_EMPRESA" />
+        <result property="cantidad" column="CANTIDAD" />
+        <result property="cantidadUnitaria" column="CANTIDAD_UNITARIA" />
+        <result property="cantidadRestante" column="CANTIDAD_RESTANTE" />
+        <result property="cantidadUnitariaRestante" column="CANTIDAD_UNITARIARESTANTE" />
+        <result property="codTipoObsIngreso" column="COD_TIPOOBSINGRESO" />
+        <result property="fechaVenc" column="FECHA_VENC" />
+        <result property="cantidadFRV" column="CANTIDAD_FRV" />
+        <result property="cantidadUnitariaFRV" column="CANTIDADUNITARIA_FRV" />
+        <result property="cantidadMAS" column="CANTIDAD_MAS" />
+        <result property="cantidadUnitariaMAS" column="CANTIDADUNITARIA_MAS" />
+        <result property="cantidadMENOS" column="CANTIDAD_MENOS" />
+        <result property="cantidadUnitariaMENOS" column="CANTIDADUNITARIA_MENOS" />
+    </resultMap>
+
+    <resultMap id="ingresoDetalleMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.ingresodetalleVenta.model.IngresoDetalleVentaDto">
+        <id property="codIngresoventas" column="COD_INGRESOVENTAS" />
+        <result property="codLoteProduccion" column="COD_LOTE_PRODUCCION" />
+        <result property="codAreaEmpresa" column="COD_AREA_EMPRESA" />
+        <result property="cantidad" column="CANTIDAD" />
+        <result property="cantidadUnitaria" column="CANTIDAD_UNITARIA" />
+        <result property="fechaVenc" column="FECHA_VENC" />
+    </resultMap>
+
+    <resultMap id="ingresoDetalleAndProductoMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.ingresodetalleVenta.model.IngresoDetalleVentaDto">
+        <result property="codIngresoventas" column="COD_INGRESOVENTAS" />
+        <result property="codLoteProduccion" column="COD_LOTE_PRODUCCION" />
+        <result property="codAreaEmpresa" column="COD_AREA_EMPRESA" />
+        <result property="cantidad" column="CANTIDAD" />
+        <result property="cantidadUnitaria" column="CANTIDAD_UNITARIA" />
+        <result property="fechaVenc" column="FECHA_VENC" />
+        <association property="presentacionesProductoDto" javaType="com.cofar.backendapolo.api.v1.molulos.presentacionProducto.model.PresentacionesProductoDto">
+            <id property="codPresentacion" column="COD_PRESENTACION" />
+            <result property="nombreProductoPresentacion" column="NOMBRE_PRODUCTO_PRESENTACION" />
+        </association>
+    </resultMap>
+
+    <select id="findAllDetalle" resultMap="ingresoDetalleMapDtoV1">
+        SELECT COD_INGRESOVENTAS,
+            COD_LOTE_PRODUCCION,
+            COD_AREA_EMPRESA,
+            CANTIDAD,
+            CANTIDAD_UNITARIA,
+            FECHA_VENC
+        FROM INGRESOS_DETALLEVENTAS;
+    </select>
+
+    <select id="findAllDetalleAndProducto" resultMap="ingresoDetalleAndProductoMapDtoV1">
+        SELECT id.COD_INGRESOVENTAS,
+            id.COD_LOTE_PRODUCCION,
+            id.COD_AREA_EMPRESA,
+            id.CANTIDAD,
+            id.CANTIDAD_UNITARIA,
+            id.FECHA_VENC,
+            pp.COD_PRESENTACION,
+            pp.NOMBRE_PRODUCTO_PRESENTACION
+        FROM INGRESOS_DETALLEVENTAS id
+        INNER JOIN PRESENTACIONES_PRODUCTO pp
+        ON pp.COD_PRESENTACION = id.COD_PRESENTACION
+    </select>
+
+    <select id="findAllDetalleById" resultMap="ingresoDetalleMapDtoV1">
+        SELECT COD_INGRESOVENTAS,
+            COD_LOTE_PRODUCCION,
+            COD_AREA_EMPRESA,
+            CANTIDAD,
+            CANTIDAD_UNITARIA,
+            FECHA_VENC
+        FROM INGRESOS_DETALLEVENTAS
+        WHERE COD_INGRESOVENTAS = #{id}
+    </select>
+
+    <select id="findAllDetalleAndProductoById" resultMap="ingresoDetalleAndProductoMapDtoV1">
+        SELECT id.COD_INGRESOVENTAS,
+            id.COD_LOTE_PRODUCCION,
+            id.COD_AREA_EMPRESA,
+            id.CANTIDAD,
+            id.CANTIDAD_UNITARIA,
+            id.FECHA_VENC,
+            pp.COD_PRESENTACION,
+            pp.NOMBRE_PRODUCTO_PRESENTACION
+        FROM INGRESOS_DETALLEVENTAS id
+        INNER JOIN PRESENTACIONES_PRODUCTO pp
+        ON pp.COD_PRESENTACION = id.COD_PRESENTACION
+        WHERE COD_INGRESOVENTAS = #{id}
+    </select>
+
+    <insert id="saveIngresoDetalleVenta" parameterType="com.cofar.backendapolo.api.v1.molulos.ingresodetalleVenta.model.IngresoDetalleVenta">
+		INSERT INTO INGRESOS_DETALLEVENTAS (
+		COD_INGRESOVENTAS,
+		COD_PRESENTACION,
+		COD_LOTE_PRODUCCION,
+		COD_AREA_EMPRESA,
+		CANTIDAD,
+		CANTIDAD_UNITARIA,
+		CANTIDAD_RESTANTE,
+		CANTIDAD_UNITARIARESTANTE,
+		COD_TIPOOBSINGRESO,
+		FECHA_VENC,
+		CANTIDAD_FRV,
+		CANTIDADUNITARIA_FRV,
+		CANTIDAD_MAS,
+		CANTIDADUNITARIA_MAS,
+		CANTIDAD_MENOS,
+		CANTIDADUNITARIA_MENOS)
+		VALUES(#{codIngresoventas}, #{codPresentacion}, #{codLoteProduccion}, #{codAreaEmpresa}, #{cantidad}, #{cantidadUnitaria},
+			#{cantidadRestante}, #{cantidadUnitariaRestante}, #{codTipoObsIngreso}, #{fechaVenc}, #{cantidadFRV},
+			#{cantidadUnitariaFRV}, #{cantidadMAS}, #{cantidadUnitariaMAS}, #{cantidadMENOS}, #{cantidadUnitariaMENOS}
+		)
+	</insert>
+
+    <delete id="deleteIngresoDetalleVenta" parameterType="int">
+        DELETE
+        FROM INGRESOS_DETALLEVENTAS
+        WHERE COD_INGRESOVENTAS = #{codIngreso}
+        AND COD_AREA_EMPRESA = #{codArea}
+    </delete>
+
+
+
+</mapper>

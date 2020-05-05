@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cofar.backendapolo.api.mapper.TipoClienteMapperApi">
+
+	<!--
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+     ***********************************************    API VERSION 1     **********************************************
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+    -->
+	<resultMap id="tipoClienteMapV1" type="com.cofar.backendapolo.api.v1.molulos.tipoCliente.model.TipoCliente">
+		<id property="codTipoCliente" column="COD_TIPOCLIENTE" />
+		<result property="nombreTipoCliente" column="NOMBRE_TIPOCLIENTE" />
+		<result property="obsTipoCliente" column="OBS_TIPOCLIENTE" />
+		<result property="codEstadoRegistro" column="COD_ESTADO_REGISTRO" />
+	</resultMap>
+
+	<resultMap id="tipoClienteMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.tipoCliente.model.TipoClienteDto">
+		<id property="codTipoCliente" column="COD_TIPOCLIENTE" />
+		<result property="nombreTipoCliente" column="NOMBRE_TIPOCLIENTE" />
+	</resultMap>
+
+	<select id="getCodAndNombreActive" resultMap="tipoClienteMapDtoV1">
+		SELECT COD_TIPOCLIENTE, NOMBRE_TIPOCLIENTE
+		FROM TIPOS_CLIENTE
+		WHERE COD_ESTADO_REGISTRO = 1
+    </select>
+
+
+</mapper>

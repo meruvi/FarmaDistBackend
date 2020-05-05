@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cofar.backendapolo.api.mapper.EstadoIngresoVentaMapperApi">
+
+	<!--
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+     ***********************************************    API VERSION 1     **********************************************
+     *******************************************************************************************************************
+     *******************************************************************************************************************
+    -->
+	<resultMap id="estadoIngresoVentaMapV1" type="com.cofar.backendapolo.api.v1.molulos.estadoIngresoVenta.model.EstadoIngresoVenta">
+		<id property="codEstadoIngresoVentas" column="COD_ESTADOINGRESOVENTA" />
+		<result property="nombreEstadoIngresoVenta" column="NOMBRE_ESTADOINGRESOVENTA" />
+		<result property="obsEstadoIngresoVenta" column="OBS_ESTADOINGRESOVENTA" />
+	</resultMap>
+
+	<resultMap id="estadoIngresoVentaMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.estadoIngresoVenta.model.EstadoIngresoVentaDto">
+		<id property="codEstadoIngresoVentas" column="COD_ESTADOINGRESOVENTA" />
+		<result property="nombreEstadoIngresoVenta" column="NOMBRE_ESTADOINGRESOVENTA" />
+	</resultMap>
+
+	<select id="getCodAndNombreActive" parameterType="int" resultMap="estadoIngresoVentaMapDtoV1">
+		SELECT COD_ESTADOINGRESOVENTA, NOMBRE_ESTADOINGRESOVENTA
+		FROM ESTADOS_INGRESOVENTAS
+    </select>
+
+
+</mapper>
