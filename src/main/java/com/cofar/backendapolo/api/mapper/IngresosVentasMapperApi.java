@@ -1,7 +1,7 @@
 package com.cofar.backendapolo.api.mapper;
 
-import com.cofar.backendapolo.api.v1.molulos.ingresoVenta.model.IngresosVentas;
-import com.cofar.backendapolo.api.v1.molulos.ingresoVenta.model.IngresosVentasDto;
+import com.cofar.backendapolo.api._v1.molulos.ingresoVenta.model.IngresosVentas;
+import com.cofar.backendapolo.api._v1.molulos.ingresoVenta.model.IngresosVentasDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

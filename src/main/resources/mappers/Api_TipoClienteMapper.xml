@@ -9,14 +9,14 @@
      *******************************************************************************************************************
      *******************************************************************************************************************
     -->
-	<resultMap id="tipoClienteMapV1" type="com.cofar.backendapolo.api.v1.molulos.tipoCliente.model.TipoCliente">
+	<resultMap id="tipoClienteMapV1" type="com.cofar.backendapolo.api._v1.molulos.tipoCliente.model.TipoCliente">
 		<id property="codTipoCliente" column="COD_TIPOCLIENTE" />
 		<result property="nombreTipoCliente" column="NOMBRE_TIPOCLIENTE" />
 		<result property="obsTipoCliente" column="OBS_TIPOCLIENTE" />
 		<result property="codEstadoRegistro" column="COD_ESTADO_REGISTRO" />
 	</resultMap>
 
-	<resultMap id="tipoClienteMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.tipoCliente.model.TipoClienteDto">
+	<resultMap id="tipoClienteMapDtoV1" type="com.cofar.backendapolo.api._v1.molulos.tipoCliente.model.TipoClienteDto">
 		<id property="codTipoCliente" column="COD_TIPOCLIENTE" />
 		<result property="nombreTipoCliente" column="NOMBRE_TIPOCLIENTE" />
 	</resultMap>

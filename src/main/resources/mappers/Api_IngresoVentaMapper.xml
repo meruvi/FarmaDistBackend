@@ -9,7 +9,7 @@
      *******************************************************************************************************************
      *******************************************************************************************************************
     -->
-	<resultMap id="resultIngresosVentasV1" type="com.cofar.backendapolo.api.v1.molulos.ingresoVenta.model.IngresosVentas">
+	<resultMap id="resultIngresosVentasV1" type="com.cofar.backendapolo.api._v1.molulos.ingresoVenta.model.IngresosVentas">
 		<id property="codIngresoventas" column="COD_INGRESOVENTAS" />
 		<result property="codAreasEmpresa" column="COD_AREA_EMPRESA" />
 		<result property="codGestion" column="COD_GESTION" />
@@ -30,7 +30,7 @@
 		<result property="obsIngresoventas" column="OBS_INGRESOVENTAS" />
 	</resultMap>
 
-	<resultMap id="resultIngresosVentasDtoV1" type="com.cofar.backendapolo.api.v1.molulos.ingresoVenta.model.IngresosVentasDto">
+	<resultMap id="resultIngresosVentasDtoV1" type="com.cofar.backendapolo.api._v1.molulos.ingresoVenta.model.IngresosVentasDto">
 		<id property="codIngresoventas" column="COD_INGRESOVENTAS" />
 		<result property="codAreasEmpresa" column="COD_AREA_EMPRESA" />
 		<result property="codAlmacenVenta" column="COD_ALMACEN_VENTA" />
@@ -76,7 +76,7 @@
 		AND COD_ALMACEN_VENTA = #{codAlmacen}
 	</select>
 
-    <insert id="saveIngresoVenta" parameterType="com.cofar.backendapolo.api.v1.molulos.ingresoVenta.model.IngresosVentas">
+    <insert id="saveIngresoVenta" parameterType="com.cofar.backendapolo.api._v1.molulos.ingresoVenta.model.IngresosVentas">
 		INSERT INTO INGRESOS_VENTAS (
 		COD_INGRESOVENTAS,
 		COD_AREA_EMPRESA,
@@ -103,7 +103,7 @@
 		)
 	</insert>
 
-	<update id="updateIngresoVenta" parameterType="com.cofar.backendapolo.api.v1.molulos.ingresoVenta.model.IngresosVentas">
+	<update id="updateIngresoVenta" parameterType="com.cofar.backendapolo.api._v1.molulos.ingresoVenta.model.IngresosVentas">
         UPDATE INGRESOS_VENTAS SET
 		COD_AREA_EMPRESA = #{codAreasEmpresa},
 		COD_GESTION = #{codGestion},

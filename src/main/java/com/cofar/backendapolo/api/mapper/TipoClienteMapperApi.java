@@ -1,6 +1,6 @@
 package com.cofar.backendapolo.api.mapper;
 
-import com.cofar.backendapolo.api.v1.molulos.tipoCliente.model.TipoClienteDto;
+import com.cofar.backendapolo.api._v1.molulos.tipoCliente.model.TipoClienteDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.ArrayList;

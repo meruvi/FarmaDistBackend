@@ -9,13 +9,13 @@
      *******************************************************************************************************************
      *******************************************************************************************************************
     -->
-	<resultMap id="estadoIngresoVentaMapV1" type="com.cofar.backendapolo.api.v1.molulos.estadoIngresoVenta.model.EstadoIngresoVenta">
+	<resultMap id="estadoIngresoVentaMapV1" type="com.cofar.backendapolo.api._v1.molulos.estadoIngresoVenta.model.EstadoIngresoVenta">
 		<id property="codEstadoIngresoVentas" column="COD_ESTADOINGRESOVENTA" />
 		<result property="nombreEstadoIngresoVenta" column="NOMBRE_ESTADOINGRESOVENTA" />
 		<result property="obsEstadoIngresoVenta" column="OBS_ESTADOINGRESOVENTA" />
 	</resultMap>
 
-	<resultMap id="estadoIngresoVentaMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.estadoIngresoVenta.model.EstadoIngresoVentaDto">
+	<resultMap id="estadoIngresoVentaMapDtoV1" type="com.cofar.backendapolo.api._v1.molulos.estadoIngresoVenta.model.EstadoIngresoVentaDto">
 		<id property="codEstadoIngresoVentas" column="COD_ESTADOINGRESOVENTA" />
 		<result property="nombreEstadoIngresoVenta" column="NOMBRE_ESTADOINGRESOVENTA" />
 	</resultMap>

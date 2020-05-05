@@ -9,7 +9,7 @@
      *******************************************************************************************************************
      *******************************************************************************************************************
     -->
-	<resultMap id="tiposIngresosVentasMapV1" type="com.cofar.backendapolo.api.v1.molulos.tipoIngresoVenta.model.TipoIngresoVenta">
+	<resultMap id="tiposIngresosVentasMapV1" type="com.cofar.backendapolo.api._v1.molulos.tipoIngresoVenta.model.TipoIngresoVenta">
 		<id property="codTipoIngresoVenta" column="COD_TIPOINGRESOVENTAS" />
 		<result property="nombreTipoIngresoVenta" column="NOMBRE_TIPOINGRESOVENTAS" />
 		<result property="obsTipoIngresoVenta" column="OBS_TIPOINGRESOVENTAS" />
@@ -17,7 +17,7 @@
 		<result property="abreviaturaTipoIngresoVenta" column="ABREVIATURA_TIPOINGRESOVENTAS" />
 	</resultMap>
 
-	<resultMap id="tiposIngresosVentasMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.tipoIngresoVenta.model.TipoIngresoVentaDto">
+	<resultMap id="tiposIngresosVentasMapDtoV1" type="com.cofar.backendapolo.api._v1.molulos.tipoIngresoVenta.model.TipoIngresoVentaDto">
 		<id property="codTipoIngresoVenta" column="COD_TIPOINGRESOVENTAS" />
 		<result property="nombreTipoIngresoVenta" column="NOMBRE_TIPOINGRESOVENTAS" />
 	</resultMap>

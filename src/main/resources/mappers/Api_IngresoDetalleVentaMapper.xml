@@ -9,7 +9,7 @@
      *******************************************************************************************************************
      *******************************************************************************************************************
     -->
-    <resultMap id="ingresosDetalleVentasMapDao" type="com.cofar.backendapolo.api.v1.molulos.ingresodetalleVenta.model.IngresoDetalleVenta">
+    <resultMap id="ingresosDetalleVentasMapDao" type="com.cofar.backendapolo.api._v1.molulos.ingresodetalleVenta.model.IngresoDetalleVenta">
         <id property="codIngresoventas" column="COD_INGRESOVENTAS" />
         <result property="codPresentacion" column="COD_PRESENTACION" />
         <result property="codLoteProduccion" column="COD_LOTE_PRODUCCION" />
@@ -28,7 +28,7 @@
         <result property="cantidadUnitariaMENOS" column="CANTIDADUNITARIA_MENOS" />
     </resultMap>
 
-    <resultMap id="ingresoDetalleMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.ingresodetalleVenta.model.IngresoDetalleVentaDto">
+    <resultMap id="ingresoDetalleMapDtoV1" type="com.cofar.backendapolo.api._v1.molulos.ingresodetalleVenta.model.IngresoDetalleVentaDto">
         <id property="codIngresoventas" column="COD_INGRESOVENTAS" />
         <result property="codLoteProduccion" column="COD_LOTE_PRODUCCION" />
         <result property="codAreaEmpresa" column="COD_AREA_EMPRESA" />
@@ -37,14 +37,14 @@
         <result property="fechaVenc" column="FECHA_VENC" />
     </resultMap>
 
-    <resultMap id="ingresoDetalleAndProductoMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.ingresodetalleVenta.model.IngresoDetalleVentaDto">
+    <resultMap id="ingresoDetalleAndProductoMapDtoV1" type="com.cofar.backendapolo.api._v1.molulos.ingresodetalleVenta.model.IngresoDetalleVentaDto">
         <result property="codIngresoventas" column="COD_INGRESOVENTAS" />
         <result property="codLoteProduccion" column="COD_LOTE_PRODUCCION" />
         <result property="codAreaEmpresa" column="COD_AREA_EMPRESA" />
         <result property="cantidad" column="CANTIDAD" />
         <result property="cantidadUnitaria" column="CANTIDAD_UNITARIA" />
         <result property="fechaVenc" column="FECHA_VENC" />
-        <association property="presentacionesProductoDto" javaType="com.cofar.backendapolo.api.v1.molulos.presentacionProducto.model.PresentacionesProductoDto">
+        <association property="presentacionesProductoDto" javaType="com.cofar.backendapolo.api._v1.molulos.presentacionProducto.model.PresentacionesProductoDto">
             <id property="codPresentacion" column="COD_PRESENTACION" />
             <result property="nombreProductoPresentacion" column="NOMBRE_PRODUCTO_PRESENTACION" />
         </association>
@@ -100,7 +100,7 @@
         WHERE COD_INGRESOVENTAS = #{id}
     </select>
 
-    <insert id="saveIngresoDetalleVenta" parameterType="com.cofar.backendapolo.api.v1.molulos.ingresodetalleVenta.model.IngresoDetalleVenta">
+    <insert id="saveIngresoDetalleVenta" parameterType="com.cofar.backendapolo.api._v1.molulos.ingresodetalleVenta.model.IngresoDetalleVenta">
 		INSERT INTO INGRESOS_DETALLEVENTAS (
 		COD_INGRESOVENTAS,
 		COD_PRESENTACION,

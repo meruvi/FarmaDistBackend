@@ -10,7 +10,7 @@
      *******************************************************************************************************************
     -->
 
-    <resultMap id="clienteMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.cliente.model.ClienteDto">
+    <resultMap id="clienteMapDtoV1" type="com.cofar.backendapolo.api._v1.molulos.cliente.model.ClienteDto">
         <id property="codCliente" column="COD_CLIENTE" />
         <result property="nombreCliente" column="NOMBRE_CLIENTE" />
     </resultMap>

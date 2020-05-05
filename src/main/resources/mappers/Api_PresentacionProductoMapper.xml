@@ -9,7 +9,7 @@
      *******************************************************************************************************************
      *******************************************************************************************************************
     -->
-	<resultMap id="productosMapV1" type="com.cofar.backendapolo.api.v1.molulos.presentacionProducto.model.PresentacionesProducto">
+	<resultMap id="productosMapV1" type="com.cofar.backendapolo.api._v1.molulos.presentacionProducto.model.PresentacionesProducto">
 		<id property="codPresentacion" column="COD_PRESENTACION" />
 		<result property="codLineaMKT" column="COD_LINEAMKT" />
 		<result property="cantidadPresentacion" column="CANTIDAD_PRESENTACION" />
@@ -22,7 +22,7 @@
 		<result property="peso" column="PESO" />
 	</resultMap>
 
-	<resultMap id="productosMapDtoV1" type="com.cofar.backendapolo.api.v1.molulos.presentacionProducto.model.PresentacionesProductoDto">
+	<resultMap id="productosMapDtoV1" type="com.cofar.backendapolo.api._v1.molulos.presentacionProducto.model.PresentacionesProductoDto">
 		<id property="codPresentacion" column="COD_PRESENTACION" />
 		<result property="nombreProductoPresentacion" column="NOMBRE_PRODUCTO_PRESENTACION" />
 	</resultMap>

@@ -9,7 +9,7 @@
      *******************************************************************************************************************
      *******************************************************************************************************************
     -->
-	<resultMap id="almacenVentaMap" type="com.cofar.backendapolo.api.v1.molulos.almacenVenta.model.AlmacenVenta">
+	<resultMap id="almacenVentaMap" type="com.cofar.backendapolo.api._v1.molulos.almacenVenta.model.AlmacenVenta">
 		<id property="codAlmacenVenta" column="COD_ALMACENVENTA" />
 		<result property="codTipoAlmacenVenta" column="COD_TIPOALMACENVENTA" />
 		<result property="nombreAlmacenVenta" column="NOMBRE_ALMACENVENTA" />
@@ -18,7 +18,7 @@
 		<result property="obsAlmacenVenta" column="OBS_ALMACENVENTA" />
 	</resultMap>
 
-	<resultMap id="almacenVentaMapDTO" type="com.cofar.backendapolo.api.v1.molulos.almacenVenta.model.AlmacenVentaDto">
+	<resultMap id="almacenVentaMapDTO" type="com.cofar.backendapolo.api._v1.molulos.almacenVenta.model.AlmacenVentaDto">
 		<id property="codAlmacenVenta" column="COD_ALMACENVENTA" />
 		<result property="nombreAlmacenVenta" column="NOMBRE_ALMACENVENTA" />
 	</resultMap>
