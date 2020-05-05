@@ -1,0 +1,34 @@
+
+	
+	
+PASOS A SEGUIR PARA CREAR OTRA VERSION DE LA APLICACION 
+(para crear una nueva version, sin alterar ni quitar la version actual ej. v1, v2, v3, vx, etc.)	
+	
+	
+1.- Crear carpeta _vX
+
+2.- Copiar contenido de _vA a _vX
+
+3.- Buscar y reemplazar coincidencia de _vA por _vX en toda la carpeta _vX
+
+4.- Renombrar archivos mappers java (ESTE COMANDO SOLO FUNCIONA EN POWER SHELL DE WINDOWS)
+
+	Dir | Rename-Item -NewName {$_.name -replace "_vA","_vX"}
+	
+5.- Verificar si existen errores en los servicios, ya que hacen referencia a los mappers java que cambiamos de nombre
+	
+6.- Copiar archivos mappers xml que empiezan por vA_  en la carpeta map para su tratamiento (estas corresponden a la version A)
+
+7.- Renombrar archivos mappers xml (ESTE COMANDO SOLO FUNCIONA EN POWER SHELL DE WINDOWS)
+	
+	Dir | Rename-Item -NewName {$_.name -replace "vA_","vX_"}
+	
+8.- Buscar y reemplazar coincidencia de _vA por _vX en toda la carpeta _vX
+
+9.- Cortar y pegar todos los archivos vX renombrados dentro de la carpera mappers
+
+
+
+
+
+	
