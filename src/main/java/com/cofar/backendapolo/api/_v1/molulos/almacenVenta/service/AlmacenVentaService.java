@@ -1,6 +1,6 @@
 package com.cofar.backendapolo.api._v1.molulos.almacenVenta.service;
 
-import com.cofar.backendapolo.api.mapper.AlmacenVentaMapperApi;
+import com.cofar.backendapolo.api._v1.mapper.AlmacenVentaMapper_v1;
 import com.cofar.backendapolo.api._v1.molulos.almacenVenta.model.AlmacenVentaDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 public class AlmacenVentaService {
 
     @Autowired
-    private AlmacenVentaMapperApi almacenVentaMapper;
+    private AlmacenVentaMapper_v1 almacenVentaMapper;
 
     @Transactional
     public List<AlmacenVentaDto> findCodAlmacenAndNombre(int codArea) {

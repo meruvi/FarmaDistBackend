@@ -1,6 +1,6 @@
 package com.cofar.backendapolo.api._v1.molulos.presentacionProducto.service;
 
-import com.cofar.backendapolo.api.mapper.PresentacionesProductoMapperApi;
+import com.cofar.backendapolo.api._v1.mapper.PresentacionesProductoMapper_v1;
 import com.cofar.backendapolo.api._v1.molulos.presentacionProducto.model.PresentacionesProducto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 public class PresentacionesProductoService {
 
     @Autowired
-    private PresentacionesProductoMapperApi presentacionesProductoMapper;
+    private PresentacionesProductoMapper_v1 presentacionesProductoMapper;
 
     @Transactional
     public List<PresentacionesProducto> findCodPresentacionAndNombre(String nombre) {

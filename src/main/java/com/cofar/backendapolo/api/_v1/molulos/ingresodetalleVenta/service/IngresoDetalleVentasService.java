@@ -1,6 +1,6 @@
 package com.cofar.backendapolo.api._v1.molulos.ingresodetalleVenta.service;
 
-import com.cofar.backendapolo.api.mapper.IngresoDetalleVentasMapperApi;
+import com.cofar.backendapolo.api._v1.mapper.IngresoDetalleVentasMapper_v1;
 import com.cofar.backendapolo.api._v1.molulos.ingresodetalleVenta.model.IngresoDetalleVentaDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class IngresoDetalleVentasService {
 
     @Autowired
-    private IngresoDetalleVentasMapperApi ingresoDetalleVentasMapper;
+    private IngresoDetalleVentasMapper_v1 ingresoDetalleVentasMapper;
 
     public ArrayList<IngresoDetalleVentaDto> getAllDetalle(){
         System.out.println("TAMAÑO>>>>>>  " + ingresoDetalleVentasMapper.findAllDetalle().size());

@@ -1,6 +1,6 @@
 package com.cofar.backendapolo.api._v1.molulos.ingresoVenta.service;
 
-import com.cofar.backendapolo.api.mapper.*;
+import com.cofar.backendapolo.api._v1.mapper.*;
 import com.cofar.backendapolo.api._v1.molulos.almacenVenta.model.AlmacenVentaDto;
 import com.cofar.backendapolo.api._v1.molulos.cliente.model.ClienteDto;
 import com.cofar.backendapolo.api._v1.molulos.estadoIngresoVenta.model.EstadoIngresoVentaDto;
@@ -25,25 +25,25 @@ import java.util.List;
 public class IngresosVentasService {
 
     @Autowired
-    private IngresosVentasMapperApi ingresosVentasMapper;
+    private IngresosVentasMapper_v1 ingresosVentasMapper;
 
     @Autowired
-    private AlmacenVentaMapperApi almacenVentaMapper;
+    private AlmacenVentaMapper_v1 almacenVentaMapper;
 
     @Autowired
-    private EstadoIngresoVentaMapperApi estadoIngresoVentaMapper;
+    private EstadoIngresoVentaMapper_v1 estadoIngresoVentaMapper;
 
     @Autowired
-    private TipoIngresoVentaMapperApi tiposIngresosVentasMapper;
+    private TipoIngresoVentaMapper_v1 tiposIngresosVentasMapper;
 
     @Autowired
-    private TipoClienteMapperApi tipoClienteMapper;
+    private TipoClienteMapper_v1 tipoClienteMapper;
 
     @Autowired
-    private ClienteMapperApi clienteMapper;
+    private ClienteMapper_v1 clienteMapper;
 
     @Autowired
-    private IngresoDetalleVentasMapperApi ingresoDetalleVentasMapper;
+    private IngresoDetalleVentasMapper_v1 ingresoDetalleVentasMapper;
 
     public List<IngresosVentasDto> findAllIngresosVentas(int codArea) {
         // Listamos los ingresos_ventas por codAreaEmpresa

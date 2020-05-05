@@ -1,6 +1,6 @@
 package com.cofar.backendapolo.api._v1.molulos.estadoIngresoVenta.service;
 
-import com.cofar.backendapolo.api.mapper.EstadoIngresoVentaMapperApi;
+import com.cofar.backendapolo.api._v1.mapper.EstadoIngresoVentaMapper_v1;
 import com.cofar.backendapolo.api._v1.molulos.estadoIngresoVenta.model.EstadoIngresoVentaDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 public class EstadoIngresoVentaService {
 
     @Autowired
-    private EstadoIngresoVentaMapperApi estadoIngresoVentaMapper;
+    private EstadoIngresoVentaMapper_v1 estadoIngresoVentaMapper;
 
     @Transactional
     public List<EstadoIngresoVentaDto> findCodEstadoIngresoAndNombre() {

@@ -1,6 +1,6 @@
 package com.cofar.backendapolo.api._v1.molulos.tipoCliente.service;
 
-import com.cofar.backendapolo.api.mapper.TipoClienteMapperApi;
+import com.cofar.backendapolo.api._v1.mapper.TipoClienteMapper_v1;
 import com.cofar.backendapolo.api._v1.molulos.tipoCliente.model.TipoClienteDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 public class TipoClienteService {
 
     @Autowired
-    private TipoClienteMapperApi tipoClienteMapper;
+    private TipoClienteMapper_v1 tipoClienteMapper;
 
     @Transactional
     public List<TipoClienteDto> findCodClienteAndNombre() {
